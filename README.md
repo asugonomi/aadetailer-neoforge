@@ -1,3 +1,5 @@
+> **asugonomi modification fork:** [日本語の変更点・導入・検証範囲](README_MODIFICATIONS.md) / [Reversible installer](https://github.com/asugonomi/ForgeNeoModification). Based on `c4c036d3b1f8`.
+
 # AADetailer Forge Neo Python 3.13
 A small fork with new features and modifications, verified to work with up-to-date Forge Neo Python 3.13 only. (It can potentially work with other webUIs, but i am not promising to maintain them for anything other than Forge Neo Python 3.13)  
 

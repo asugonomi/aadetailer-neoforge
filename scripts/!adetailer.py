@@ -625,6 +625,10 @@ class AfterDetailerScript(scripts.Script):
 
         ad_script_names_string: str = opts.data.get("ad_script_names", SCRIPT_DEFAULT)
         ad_script_names = ad_script_names_string.split(",") + BUILTIN_SCRIPT.split(",")
+        # Anima Native Tools implements signed prompt weights as well as sampling.
+        # Keep its original script arguments during the nested face pass.
+        if type(p.sd_model).__name__ == "Anima":
+            ad_script_names.append("anima_native")
         script_names_set = {
             name
             for script_name in ad_script_names
@@ -677,6 +681,8 @@ class AfterDetailerScript(scripts.Script):
         override_settings = self.get_override_settings(p, args)
 
         version_args = {}
+        if hasattr(p, "distilled_cfg_scale"):
+            version_args["distilled_cfg_scale"] = p.distilled_cfg_scale
         if schedulers:
             version_args.update(self.get_scheduler(p, args))
 
